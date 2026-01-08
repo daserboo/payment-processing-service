@@ -59,11 +59,15 @@ func (s *PaymentService) ProcessPayment(
 	if balance < amount {
 		err = domain.ErrInsufficientFunds
 		if idempotencyKey != "" {
-			s.idem.Set(idempotencyKey, idempotency.Result{
-				Err:       err,
-				CreatedAt: time.Now(),
-			}, 5*time.Minute)
+			s.idem.Set(
+				idempotencyKey,
+				idempotency.Result{
+					Err:       err,
+					CreatedAt: time.Now(),
+				},
+			)
 		}
+
 		return err
 	}
 
@@ -79,11 +83,13 @@ func (s *PaymentService) ProcessPayment(
 	err = s.ledger.Append(entry)
 
 	if idempotencyKey != "" {
-		s.idem.Set(idempotencyKey, idempotency.Result{
-			TransactionID: entry.ID,
-			Err:           err,
-			CreatedAt:     time.Now(),
-		}, 5*time.Minute)
+		s.idem.Set(
+			idempotencyKey,
+			idempotency.Result{
+				Err:       err,
+				CreatedAt: time.Now(),
+			},
+		)
 	}
 
 	return err

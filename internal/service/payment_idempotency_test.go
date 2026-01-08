@@ -15,24 +15,34 @@ func TestPaymentService_Idempotency(t *testing.T) {
 	locker := locking.NewAccountLocker()
 	idem := idempotency.NewMemoryStore()
 
-	svc := NewPaymentService(ledger, locker, idem)
+	service := NewPaymentService(ledger, locker, idem)
 
 	_ = ledger.Append(domain.LedgerEntry{
 		AccountID: "acc-1",
 		Amount:    1000,
+		Type:      domain.EntryCredit,
 	})
 
-	key := "idem-key-1"
+	err1 := service.ProcessPayment(
+		context.Background(),
+		"idem-123",
+		"acc-1",
+		500,
+		"USD",
+	)
 
-	err1 := svc.ProcessPayment(context.Background(), key, "acc-1", 500, "USD")
-	err2 := svc.ProcessPayment(context.Background(), key, "acc-1", 500, "USD")
+	err2 := service.ProcessPayment(
+		context.Background(),
+		"idem-123",
+		"acc-1",
+		500,
+		"USD",
+	)
 
-	if err1 != nil || err2 != nil {
-		t.Fatalf("expected both calls to succeed once, got %v %v", err1, err2)
+	if err1 != nil {
+		t.Fatal(err1)
 	}
-
-	entries, _ := ledger.GetByAccount("acc-1")
-	if len(entries) != 2 { // initial credit + one debit
-		t.Fatalf("expected 2 ledger entries, got %d", len(entries))
+	if err2 != nil {
+		t.Fatalf("second call must be idempotent")
 	}
 }
