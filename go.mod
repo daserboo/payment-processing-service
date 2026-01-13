@@ -1,4 +1,4 @@
-module github.com/dsrio/payment-processing-service
+module github.com/daserio/payment-processing-service
 
 go 1.25.0
 

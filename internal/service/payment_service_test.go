@@ -5,10 +5,10 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/dsrio/payment-processing-service/internal/domain"
-	"github.com/dsrio/payment-processing-service/internal/idempotency"
-	"github.com/dsrio/payment-processing-service/internal/locking"
-	"github.com/dsrio/payment-processing-service/internal/repository/memory"
+	"github.com/daserio/payment-processing-service/internal/domain"
+	"github.com/daserio/payment-processing-service/internal/idempotency"
+	"github.com/daserio/payment-processing-service/internal/locking"
+	"github.com/daserio/payment-processing-service/internal/repository/memory"
 )
 
 func TestPaymentService_NoDoubleSpend(t *testing.T) {

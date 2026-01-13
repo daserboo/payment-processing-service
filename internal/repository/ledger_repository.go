@@ -1,6 +1,6 @@
 package repository
 
-import "github.com/dsrio/payment-processing-service/internal/domain"
+import "github.com/daserio/payment-processing-service/internal/domain"
 
 type LedgerRepository interface {
 	Append(entry domain.LedgerEntry) error
