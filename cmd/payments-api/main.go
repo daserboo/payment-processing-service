@@ -9,11 +9,11 @@ import (
 	"syscall"
 	"time"
 
-	httpTransport "github.com/daserboo/payment-processing-service/internal/http"
-	"github.com/daserboo/payment-processing-service/internal/idempotency"
-	"github.com/daserboo/payment-processing-service/internal/locking"
-	"github.com/daserboo/payment-processing-service/internal/repository/memory"
-	"github.com/daserboo/payment-processing-service/internal/service"
+	httpTransport "github.com/dsrio/payment-processing-service/internal/http"
+	"github.com/dsrio/payment-processing-service/internal/idempotency"
+	"github.com/dsrio/payment-processing-service/internal/locking"
+	"github.com/dsrio/payment-processing-service/internal/repository/memory"
+	"github.com/dsrio/payment-processing-service/internal/service"
 )
 
 func main() {

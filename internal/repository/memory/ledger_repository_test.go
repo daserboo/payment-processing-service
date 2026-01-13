@@ -4,7 +4,7 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/daserboo/payment-processing-service/internal/domain"
+	"github.com/dsrio/payment-processing-service/internal/domain"
 )
 
 func TestLedgerRepository_AppendAndGet(t *testing.T) {

@@ -6,10 +6,10 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/daserboo/payment-processing-service/internal/domain"
-	"github.com/daserboo/payment-processing-service/internal/idempotency"
-	"github.com/daserboo/payment-processing-service/internal/locking"
-	"github.com/daserboo/payment-processing-service/internal/repository"
+	"github.com/dsrio/payment-processing-service/internal/domain"
+	"github.com/dsrio/payment-processing-service/internal/idempotency"
+	"github.com/dsrio/payment-processing-service/internal/locking"
+	"github.com/dsrio/payment-processing-service/internal/repository"
 )
 
 type PaymentService struct {

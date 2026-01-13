@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/daserboo/payment-processing-service/internal/service"
+	"github.com/dsrio/payment-processing-service/internal/service"
 )
 
 type PaymentHandler struct {

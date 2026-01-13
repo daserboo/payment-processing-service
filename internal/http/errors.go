@@ -4,8 +4,8 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/daserboo/payment-processing-service/internal/domain"
-	"github.com/daserboo/payment-processing-service/internal/idempotency"
+	"github.com/dsrio/payment-processing-service/internal/domain"
+	"github.com/dsrio/payment-processing-service/internal/idempotency"
 )
 
 func mapError(err error) int {

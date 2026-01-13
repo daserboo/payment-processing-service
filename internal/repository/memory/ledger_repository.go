@@ -3,7 +3,7 @@ package memory
 import (
 	"sync"
 
-	"github.com/daserboo/payment-processing-service/internal/domain"
+	"github.com/dsrio/payment-processing-service/internal/domain"
 )
 
 type LedgerRepository struct {
